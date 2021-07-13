@@ -9,7 +9,7 @@
         <div class="navIcon"> <a href="/users/sign-in"> Sign In</a></div>
         <div class="navIcon"> <a href="/users/sign-up"> Sign Up</a></div>
         <%}else{%>
-            <div class="navIcon"> <a href="/users/sign-out"> Sign Out</a></div>
+            <div class="navIcon"> <a href="/users/profile/<%=locals.user.id%>"> My profile</a></div>
         <%}%>
         <div  id="sell"> <a href="/books/add"> Sell Book</a></div>
        
