@@ -1,0 +1,20 @@
+
+    <%if(locals.user){%>
+
+
+        <label for="add-new-book">Post Book/Notes For Sale</label>
+        <form id="add-new-book" action="/books/post" enctype="multipart/form-data" method="POST">
+            <input type="text" name="title" placeholder="Title" required>
+            <input type="text" name="author" placeholder="Author">
+            <label for="type">Choose a category:</label>
+            <select id="type" name="type">
+                <option value="book">Book</option>
+                <option value="notes">Notes</option>
+            </select>
+            <input type="file" name="avatar" placeholder="Add Image">
+            <input type="submit" value="Submit">
+        </form>
+
+    <%}else{%>
+        <h2>Please Log In First!!</h2>
+    <%}%>

@@ -1,0 +1,20 @@
+<%for(var i=0;i<book.length;i++){%>
+    <a href="<%=book[i].avatar%>"><img src="<%=book[i].avatar%>" alt="Book Image" height="100px" width="100px"></a>
+    <br>
+    <ul>
+        <li>
+            Title: <%=book[i].title%>
+        </li>
+        <li>
+            Author/Publisher: <%=book[i].author%>
+        </li>
+        <li>
+            Type: <%=book[i].type%>
+        </li>
+        <li>
+            Seller: <%=book[i].user.name%>
+        </li>
+
+    </ul>
+
+<%}%>

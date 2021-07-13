@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Profile | <%=profile_user.name%>></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+</head>
+<body>
+    <h1> User Profile </h1>
+    <h3>Name: <%=profile_user.name%></h3>
+    <h3>Email: <%=profile_user.email%></h3>
+    <br>
+    <img src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
+
+    <p><a href="/">HOME</a></p>
+    <a href="/users/sign-out"><button>Sign Out</button></a>
+    <br>
+
+    <%if(user.id==profile_user.id){%>
+
+        <h3>Update Your Profile</h3>
+        <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST">
+            <input type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>" required>
+            <input type="email" name="email" placeholder="Your Email" value="<%=profile_user.email%>" required>
+            <input type="file" name="avatar" placeholder="Profile Picture">
+            <!-- <input type="password" name="password" placeholder="Your Password" value="<%profile_user.password%>" required> -->
+            <input type="submit" value="update">
+        </form>
+
+    <%}%>
+
+    <%for(var i=0;i<books.length;i++){%>
+        <a href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100px" width="100px"></a>
+        <br>
+        <ul>
+            <li>
+                Title: <%=books[i].title%>
+            </li>
+            <li>
+                Author/Publisher: <%=books[i].author%>
+            </li>
+            <li>
+                Type: <%=books[i].type%>
+            </li>
+            <li>
+                Seller: <%=books[i].user.name%>
+            </li>
+    
+            <li><a href="/books/remove/<%=books[i].id%>">Delete Advertisement</a></li>
+        </ul>
+    
+    <%}%>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script>
+        <%if((flash.success)&&(flash.success.length>0)){%>
+
+            new Noty({
+            theme: 'relax',
+            text: '<%=flash.success%>',
+            type: 'success',
+            layout: 'topRight',
+            timeout: 1500
+        }).show();
+        
+        <%}%>
+    </script>
+
+</body>
+</html>

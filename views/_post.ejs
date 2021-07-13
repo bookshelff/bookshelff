@@ -1,0 +1,53 @@
+<div id="posts-list-container">
+    <ul>
+        <%for(var i=0;i<posts.length;i++){%>
+
+            <li id="post-<%=posts[i]._id%>">
+                <%if(locals.user.id==posts[i].user.id){%>
+                    <small>
+                        <a class="delete-post-button" href="/posts/destroy/<%=posts[i].id%>" postid="<%=posts[i].user._id%>" >X</a>
+                    </small>
+                <%}%>
+                <%=posts[i].content%><br>
+                <small><%=posts[i].user.name%></small>
+                <small><a class="toggle_likes_button" data-likes="<%=posts[i].likes.length%>" href="/likes/toggle/?id=<%=posts[i]._id%>&type=Post"><%=posts[i].likes.length%> Likes</a></small>
+                <div id="post-comments">
+                    <form action="/comments/create" method="post">
+                    <input type="text" name="content" placeholder="Comment... " required>
+                    <input type="hidden" name="post" value="<%=posts[i]._id%>">
+                    <input type="submit" value="Add Comment">
+                    </form>
+                </div>
+
+                <div id="post-comments">
+                    <ul id="post-comments-<%=posts[i]._id%>">
+                        <%for(var j=0;j<posts[i].comments.length;j++){%>
+                             <li>
+                                <%if((locals.user.id==posts[i].comments[j].user.id)||(locals.user.id==posts[i].user.id)){%>
+                                    <small>
+                                        <a href="/comments/destroy/<%=posts[i].comments[j].id%>">X</a>
+                                    </small>
+                                <%}%>
+                                <%= posts[i].comments[j].content %> <br>
+                                <small>
+                                    <%= posts[i].comments[j].user.name %>
+                                </small>
+                                <small><a class="toggle_likes_button" data-likes="<%=posts[i].comments[j].likes.length%>" href="/likes/toggle/?id=<%=posts[i].comments[j]._id%>&type=Comment"><%=posts[i].comments[j].likes.length%> Likes</a></small>
+                                
+                            </li>
+                        <%}%>
+                    </ul>
+                </div>
+
+            </li>
+        <%}%>
+    </ul>
+</div>
+
+<script src="js/toggle_likes.js"></script>
+<script>
+    var button = $('.toggle_likes_button');
+    for(var i=0;i<button.length;i++){
+        let toggleLike = new ToggleLike(button[i]);
+    }
+</script>
