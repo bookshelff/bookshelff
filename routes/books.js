@@ -9,6 +9,6 @@ Router.post('/post',passport.checkAuthentication,booksController.postBook);
 Router.get('/home',booksController.home);
 Router.get('/all-books',passport.checkAuthentication,booksController.allBooks);
 Router.get('/remove/:id',passport.checkAuthentication,booksController.remove);
-Router.get('/search/:keyword',passport.checkAuthentication,booksController.searchBooks);
+Router.get('/search',passport.checkAuthentication,booksController.searchBooks);
 
 module.exports = Router;

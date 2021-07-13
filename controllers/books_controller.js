@@ -22,6 +22,7 @@ module.exports.postBook = async function(req,res){
                     user: req.user,
                     author: req.body.author,
                     title: req.body.title,
+                    location: req.body.location,
                     type: req.body.type
                 },function(err,book){
                     if(err){
@@ -104,8 +105,8 @@ module.exports.remove = async function(req,res){
 
 module.exports.searchBooks = function(req,res){
 
-    const keyword = req.params.keyword;
-    console.log(keyword);
+    const keyword = req.body.title + req.body.location ;
+    console.log("dsffsd",req.body);
 
     Book.find({},function(err,books){
         if(err){
