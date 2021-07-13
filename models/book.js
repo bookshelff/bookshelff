@@ -23,6 +23,10 @@ const bookSchema = new mongoose.Schema({
         type: String,
         enum: ['book','notes'],
         require: true
+    },
+    location:{
+        type : String,
+        require : true
     }
 },{
     timestamps: true
