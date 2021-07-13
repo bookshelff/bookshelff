@@ -1,5 +1,7 @@
 const Book = require('../models/book');
 const fs = require('fs');
+// const fuse = require('../config/fuse');
+const Fuse = require('fuse.js');
 
 module.exports.addBook = async function(req,res){
     return res.render('add_book',{
@@ -98,4 +100,27 @@ module.exports.remove = async function(req,res){
         console.log("Internal Server Error!",err);
         return res.redirect('back');
     }
+};
+
+module.exports.searchBooks = function(req,res){
+
+    const keyword = req.params.keyword;
+    console.log(keyword);
+
+    Book.find({},function(err,books){
+        if(err){
+            console.log("Error in finding books",err);
+        }
+        console.log(books);
+        const fuse = new Fuse(books,{
+            keys: [
+                'title',
+                'author',
+                'type'
+            ]
+        });
+    
+        const result = fuse.search(keyword);
+        console.log(result);
+    });
 };

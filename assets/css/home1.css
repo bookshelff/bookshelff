@@ -13,14 +13,13 @@ body {
   top: 50px;
   /* text-shadow: 4px 4px 8px black; */
   z-index: 10;
-  background-color: transparent;
 }
 
 #logo a {
   /* float: left; */
-  top: 25px;
-  position: relative;
-  font-size: 75px;
+  top: -50px;
+  color: white;
+  font-size: 50px;
   font-weight: 700;
   color: white;
   text-decoration: none;
