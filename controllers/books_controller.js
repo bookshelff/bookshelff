@@ -1,6 +1,5 @@
 const Book = require('../models/book');
 const fs = require('fs');
-// const fuse = require('../config/fuse');
 const Fuse = require('fuse.js');
 
 module.exports.addBook = async function(req,res){
@@ -105,14 +104,13 @@ module.exports.remove = async function(req,res){
 
 module.exports.searchBooks = function(req,res){
 
-    const keyword = req.body.title + req.body.location ;
-    console.log("dsffsd",req.body);
+    const keyword = req.query.title + req.query.location ;
+    console.log(keyword);
 
     Book.find({},function(err,books){
         if(err){
             console.log("Error in finding books",err);
         }
-        console.log(books);
         const fuse = new Fuse(books,{
             keys: [
                 'title',
@@ -120,8 +118,16 @@ module.exports.searchBooks = function(req,res){
                 'type'
             ]
         });
-    
+        // console.log(books);
+        
         const result = fuse.search(keyword);
         console.log(result);
+        // return result;
+        
+  
     });
+        
+        
+    
+   
 };
