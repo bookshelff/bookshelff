@@ -1,0 +1,14 @@
+.si {
+    outline: none;
+    padding: 3px;
+    margin: 4px;
+    border: none;
+    height: 60px;
+    background-color: white;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid #73938b;
+    transition: width 0.4s ease-in-out;
+    flex-shrink: 0;
+    padding-left: 10px;
+  }
