@@ -32,6 +32,7 @@ if(env.name=='development'){
         prefix: '/css'
     }));
 }
+app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded());
 // use cookie parser befire app.Router, or else cookies won't go get printed in the routes.
 app.use(cookieParser());
