@@ -3,15 +3,26 @@
 <head>
     <title>Profile | <%=profile_user.name%>></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <link rel="stylesheet" href=" <%=assetPath('/css/profile.css')%>">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 </head>
 <body>
-    <h1> User Profile </h1>
-    <h3>Name: <%=profile_user.name%></h3>
-    <h3>Email: <%=profile_user.email%></h3>
-    <br>
-    <img src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
 
-    <p><a href="/">HOME</a></p>
+    <div id="user-info">
+    <div id="info-container">
+     
+    <img id="dp" src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
+    
+    <h3 id="name"><%=profile_user.name%></h3>
+    <div id="perinfo"></div>
+    
+    <i class="far fa-envelope" ></i><span class="info"> <%=profile_user.email%></span>
+
+    </div>
+    </div>
+    
+<!-- ddzzcx -->
+   
     <a href="/users/sign-out"><button>Sign Out</button></a>
     <br>
 
@@ -27,6 +38,7 @@
         </form>
 
     <%}%>
+
 
     <%for(var i=0;i<books.length;i++){%>
         <a href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100px" width="100px"></a>
