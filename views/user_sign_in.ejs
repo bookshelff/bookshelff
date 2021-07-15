@@ -20,7 +20,7 @@
     <div id="parent-sign-in">
     <h1>Sign In</h1>
 
-    <p class="info">Quick sign avalilable using</p> 
+    <p class="info">Quick sign in avalilable using</p> 
     <a href="/users/auth/google">  <div id="glogo"> <img src="<%=assetPath('/img/google-logo.png')%>" alt="G+"></img> </div> </a>
     <br><br><br>
     <div id="enter-details" class="info">Or, enter your details</div>
@@ -39,10 +39,13 @@
     <p class="info" id="forgot">Forgot Password?</p>
         <div id="forgot-form">
             <form action="/users/forgot-password" method="POST">
-                <input type="email" id="otp" class="otp" name="email" placeholder="Your register email" required><br>
+                <input type="email" id="otp" class="otp" name="email" placeholder="Your registered email" required><br> <br>
+
                 <input type="submit" class="otp"  value="Send OTP">
             </form>
         </div>
+
+    <span class="info">No account yet?</span> <a href="" class="info" id="link">Create an account</a>
     
     </div>
     

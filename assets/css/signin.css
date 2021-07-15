@@ -1,50 +1,43 @@
-
-body{
-  background-color: rgb(250, 250, 250)
-}
-
-h1{
+h1 {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 50px
+  font-size: 40px;
 }
-#parent-sign-in{
+
+#parent-sign-in {
   /* border: 2px solid; */
-  width:45vw;
+  width: 45vw;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 80px;
   height: 80vh;
 }
-.info
-{
+
+.info {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: grey;
 }
-.forminfofor
-{
+
+.forminfo {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  color:black;
+  color: black;
   font-size: 20px;
   font-weight: 500;
-
 }
 
-#glogo
-{
-  border: 2px solid rgb(255, 125, 125);
+#glogo {
+  border: 2px solid #ff7d7d;
   text-align: center;
   margin: auto;
   height: 50px;
   width: 50px;
   border-radius: 5px;
- 
 }
- 
-#glogo img
-{
+
+#glogo img {
   height: 50px;
   width: 50px;
   margin: auto;
 }
+
 .si {
   outline: none;
   padding: 3px;
@@ -59,27 +52,29 @@ h1{
   flex-shrink: 0;
   padding-left: 10px;
 }
-#formbox
-{
+
+#formbox {
   /* border: 2px solid red; */
   text-align: left;
   margin-left: 29%;
-  width:50%;
-
+  width: 50%;
 }
-#forgot
-{
-  margin-left:30%;
+
+#forgot {
+  margin-left: 50%;
+  color:rgb(72, 173, 111);
+  cursor: pointer;
   text-decoration: none;
 }
+
 input[type=email]:focus {
   background-color: none;
   /* border: 3px solid #555; */
-  color:rgb(82, 82, 82);
+  color: #525252;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-input[type=submit]
-{
+
+input[type=submit] {
   outline: none;
   border: none;
   height: 40px;
@@ -93,15 +88,12 @@ input[type=submit]
   border-radius: 8px;
 }
 
-#forgot-form
-{
+#forgot-form {
   display: none;
-  padding:5px
-  
+  padding: 5px;
 }
 
-#otp
-{
+#otp {
   outline: none;
   padding: 3px;
   /* margin: 4px; */
@@ -113,9 +105,13 @@ input[type=submit]
   transition: width 0.4s ease-in-out;
   flex-shrink: 0;
   padding-left: 10px;
-
 }
-.otp
+
+.otp {
+  /* transform: scale(.8); */
+}
+
+#link
 {
-  transform: scale(.8);
+  color:rgb(72, 173, 111)
 }
