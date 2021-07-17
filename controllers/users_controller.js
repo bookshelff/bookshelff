@@ -114,7 +114,7 @@ module.exports.create = function(req,res){
             if(user){
                 console.log("Email already exists!");
                 // alert("Email already exists!");
-                return res.redirect('./sign-in');
+                return res.redirect('./');
             }
             else{
                 User.create(req.body,function(err,user){
@@ -125,7 +125,7 @@ module.exports.create = function(req,res){
         
                     // alert("User created successfully!");
                     console.log("User created successfully!");
-                    return res.redirect('./sign-in');
+                    return res.redirect('./signin');
                 });
             }
         }

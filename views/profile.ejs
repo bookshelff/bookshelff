@@ -28,7 +28,7 @@
     <span id="perinfo">
     
     <i class="far fa-envelope" ></i> <span class="info"> <%=profile_user.email%></span><br><br><br>
-    <i class="fa fa-phone" aria-hidden="true"></i> <span class="info"> 999999999999</span>
+    <i class="fa fa-phone" aria-hidden="true"></i> <span class="info"> <%=profile_user.phone%></span>
 </span>
 
 </div>
@@ -40,6 +40,8 @@
         <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST"> <br>
         <div class="forminfo">Update Name</div>
         <input class="si" type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>"> <br> <br>
+        <div class="forminfo">Update Contact Number</div>
+        <input class="si" type="number" name="phone" placeholder="Your Contact Number" value="<%=profile_user.phone%>"> <br> <br>
         <div class="forminfo">Update email</div>
         <input class="si" type="email" name="email" placeholder="Your Email" value="<%=profile_user.email%>" required> <br> <br>
         <div class="forminfo">Update Profile Picture</div>
