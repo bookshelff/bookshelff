@@ -22,7 +22,8 @@ module.exports.postBook = async function(req,res){
                     author: req.body.author,
                     title: req.body.title,
                     location: req.body.location,
-                    type: req.body.type
+                    type: req.body.type,
+                    price: req.body.price
                 },function(err,book){
                     if(err){
                         console.log("Error in creating a book",err);
