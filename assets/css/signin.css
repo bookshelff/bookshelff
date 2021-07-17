@@ -62,8 +62,6 @@ h1 {
 
 #forgot {
   margin-left: 50%;
-  color:rgb(72, 173, 111);
-  cursor: pointer;
   text-decoration: none;
 }
 
@@ -109,9 +107,4 @@ input[type=submit] {
 
 .otp {
   /* transform: scale(.8); */
-}
-
-#link
-{
-  color:rgb(72, 173, 111)
 }
