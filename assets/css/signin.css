@@ -3,12 +3,14 @@ h1 {
   font-size: 50px;
 }
 #full{
-  border: 2px solid red;
-  display: inline;
+  /* border: 2px solid red; */
+  display: flex;
+  /* justify-content: space-between; */
+  
 }
 #parent-sign-in {
  
-  border: 2px solid;
+  /* border: 2px solid; */
   width: 40vw;
   text-align: center;
   margin: 5px;
@@ -116,25 +118,28 @@ input[type=submit] {
 }
 
 #images{
-  margin-top: 200px;
-  border: 2px solid;
+  margin-top: -30px;
+  /* margin-left: -100px; */
+  /* border: 2px solid; */
   text-align: left;
   width: 40vw;
+  transform: scale(.8);
 }
 
 #img1 img{
+  
   height:300px;
   width: 250px;
-
+  margin-left: 100px;
   border-radius: 10px;
 }
 
 #img2 img{
   position: relative;
   height:300px;
-  width: 360px;
+  width: 420px;
   margin-top: -60px;
-  margin-left: 200px;
+  margin-left: 300px;
   border-radius: 10px;
   z-index: 3;
 }
@@ -142,7 +147,7 @@ input[type=submit] {
  
   margin-top: -30px;
   height:300px;
-  width: 340px;
+  width: 420px;
  
   border-radius: 10px;
 }
