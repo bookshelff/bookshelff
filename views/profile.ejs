@@ -3,31 +3,67 @@
 <head>
     <title>Profile | <%=profile_user.name%>></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
-</head>
-<body>
-    <h1> User Profile </h1>
-    <h3>Name: <%=profile_user.name%></h3>
-    <h3>Email: <%=profile_user.email%></h3>
-    <br>
-    <img src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
+    <link rel="stylesheet" href=" <%=assetPath('/css/profile.css')%>">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#update').click(function() {
+              $('#update-form').toggle("slide");
+            });
+        });
+        </script>
 
-    <p><a href="/">HOME</a></p>
-    <a href="/users/sign-out"><button>Sign Out</button></a>
-    <br>
+</head>
+
+
+<body>
+
+    <div id="user-info">
+    <div id="info-container">
+     
+    <img id="dp" src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
+    
+    <h3 id="name"><%=profile_user.name%></h3>
+    <span id="perinfo">
+    
+    <i class="far fa-envelope" ></i> <span class="info"> <%=profile_user.email%></span><br><br><br>
+    <i class="fa fa-phone" aria-hidden="true"></i> <span class="info"> <%=profile_user.phone%></span>
+</span>
+
+</div>
 
     <%if(user.id==profile_user.id){%>
 
-        <h3>Update Your Profile</h3>
-        <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST">
-            <input type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>" required>
-            <input type="email" name="email" placeholder="Your Email" value="<%=profile_user.email%>" required>
-            <input type="file" name="avatar" placeholder="Profile Picture">
-            <!-- <input type="password" name="password" placeholder="Your Password" value="<%profile_user.password%>" required> -->
-            <input type="submit" value="update">
+        <h3 id="update" class="forminfo">Update Your Profile</h3>
+        <div id="update-form">
+        <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST"> <br>
+        <div class="forminfo">Update Name</div>
+        <input class="si" type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>"> <br> <br>
+        <div class="forminfo">Update Contact Number</div>
+        <input class="si" type="number" name="phone" placeholder="Your Contact Number" value="<%=profile_user.phone%>"> <br> <br>
+        <div class="forminfo">Update email</div>
+        <input class="si" type="email" name="email" placeholder="Your Email" value="<%=profile_user.email%>" required> <br> <br>
+        <div class="forminfo">Update Profile Picture</div>
+        <input type="file" name="avatar" placeholder="Profile Picture">
+        <input type="submit" value="update">
         </form>
+        </div>
+
+        
+    <a href="/users/sign-out"><button>Sign Out</button></a>
 
     <%}%>
+    </div>
+    
 
+   
+
+    <br>
+
+  
+    <div id="ads">
+    <div class="forminfo"> Ads published by <%=profile_user.name%></div>
     <%for(var i=0;i<books.length;i++){%>
         <a href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100px" width="100px"></a>
         <br>
@@ -49,6 +85,8 @@
         </ul>
     
     <%}%>
+
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <script>

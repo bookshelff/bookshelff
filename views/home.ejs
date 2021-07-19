@@ -32,9 +32,11 @@
         </div>
 
         <div id="search-bar"> 
-            <input type="text" placeholder="Location" >
-            <input type="text" placeholder="Book Name" >
+            <form  method="GET"  action="/books/search">
+            <input type="text" name="location" placeholder="Location" >
+            <input type="text" name="title" placeholder="Book Name" >
             <input type="submit" value="Search Book">
+        </form>
         </div>
     </div>
 

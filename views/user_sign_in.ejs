@@ -1,29 +1,56 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Social | Sign In</title>
+    <title> Sign In</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <link rel="stylesheet" type="text/css" href="<%=assetPath('/css/signin.css')%>">
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#forgot').click(function() {
+          $('#forgot-form').toggle("slide");
+        });
+    });
+    </script>
 <body>
     
-    <h1><%=title%></h1>
-    <link rel="stylesheet" href="style.css">
-    <form action="/users/create-session" method="POST">
-        <input type="email" name="email" placeholder="Email"  required>
-        <input type="password" name="password" placeholder="Password"  required>
-        <input type="submit" value="Sign In">
+   
+    <div id="parent-sign-in">
+    <h1>Sign In</h1>
 
+    <p class="info">Quick sign in avalilable using</p> 
+    <a href="/users/auth/google">  <div id="glogo"> <img src="<%=assetPath('/img/google-logo.png')%>" alt="G+"></img> </div> </a>
+    <br><br><br>
+    <div id="enter-details" class="info">Or, enter your details</div>
+    <form action="/users/create-session" method="POST" id="signin">
+        <br>
+        <div id="formbox">
+        <div class="forminfo">Email address</div>
+        <input class="si" type="email" name="email" placeholder="email@mail.com"  required> <br> <br>
+        <div class="forminfo">Password</div>
+        <input class="si" type="password" name="password" placeholder="Password"  required> <br>
+        
+        </div>
+        <br>
+        <input class="submit" type="submit" value="Sign In">
     </form>
-    <div id="forgot-possword">
-        <h3>Forgor Password?</h3>
-        <form action="/users/forgot-password" method="POST">
-            <input type="email" name="email" placeholder="email" required>
-            <input type="submit" value="Reset Password">
-        </form>
+    <p class="info" id="forgot">Forgot Password?</p>
+        <div id="forgot-form">
+            <form action="/users/forgot-password" method="POST">
+                <input type="email" id="otp" class="otp" name="email" placeholder="Your registered email" required><br> <br>
+
+                <input type="submit" class="otp"  value="Send OTP">
+            </form>
+        </div>
+
+    <span class="info">No account yet?</span> <a href="" class="info" id="link">Create an account</a>
+    
     </div>
-    <p>
-        <a href="/users/auth/google">Google SignIn/SignUp</a>
-    </p>
+    
+
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
         <script>
@@ -44,7 +71,6 @@
                 timeout: 1500
                 }).show();
             <%}%>
-
     </script>
 </body>
 </html>
