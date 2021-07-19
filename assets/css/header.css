@@ -9,15 +9,15 @@
     /* margin-left: 5vw; */
     /* text-shadow: 4px 4px 8px black; */
     z-index: 10;
-    background-color: rgb(0, 204, 255);
+    /* background-color: rgb(0, 204, 255); */
   }
   
   #logo a {
     /* float: left; */
     top: -50px;
-    font-size: 50px;
+    font-size: 60px;
     font-weight: 700;
-    color: white;
+    color: rgb(100, 100, 100);
     text-decoration: none;
   }
   
@@ -29,12 +29,13 @@
     transition: all .1s;
     /* border-radius: 35%; */
     padding: 1px;
+    color: black;
   }
   
   .navIcon a:hover {
     /* background-color: rgb(197, 197, 197); */
     /* border-bottom: 1px solid white; */
-    color: white;
+    color: rgb(0, 0, 0);
     text-shadow: 4px 4px 8px black;
     /* font-size: 33px; */
   }

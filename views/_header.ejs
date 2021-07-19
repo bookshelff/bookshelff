@@ -7,7 +7,7 @@
         <div  id="logo"> <a href="/"> Bookshelff</a></div>
         <%if(!(locals.user)){%>
         <div class="navIcon"> <a href="/users/sign-in"> Sign In</a></div>
-        <div class="navIcon"> <a href="/users/sign-up"> Sign Up</a></div>
+        <!-- <div class="navIcon"> <a href="/users/sign-up"> Sign Up</a></div> -->
         <%}else{%>
             <div class="navIcon"> <a href="/users/profile/<%=locals.user.id%>"> My profile</a></div>
         <%}%>

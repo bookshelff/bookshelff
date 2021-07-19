@@ -1,27 +1,20 @@
-<%for(var i=0;i<book.length;i++){%>
-    <a href="<%=book[i].avatar%>"><img src="<%=book[i].avatar%>" alt="Book Image" height="100px" width="100px"></a>
-    <br>
-    <ul>
-        <li>
-            Title: <%=book[i].title%>
-        </li>
-        <li>
-            Author/Publisher: <%=book[i].author%>
-        </li>
-        <li>
-            Type: <%=book[i].type%>
-        </li>
 
-        <li>
-            Location: <%=book[i].location%>
-        </li>
-        <li>
-            Seller: <%=book[i].user.name%>
-        </li>
-         <li>
-             Price: <%=book[i].price%>
-         </li>
+<link rel="stylesheet" type="text/css" href="<%=assetPath('/css/all-books.css')%>">
+<div id="shelf">
+    <%for(var i=0;i<book.length;i++){%>
 
-    </ul>
+        <div id="book">
 
-<%}%>
+            <a id="book-img" href="<%=book[i].avatar%>"><img src="<%=book[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+            <div id="book-info">
+                <h4 id="book-title"> <%=book[i].title%> </h4>
+                <p>Author: <%=book[i].author%></p>
+                <p>Location: <%=book[i].location%></p>
+                <p>Seller: <a href="/users/profile/<%=book[i].user.id%>"><%=book[i].user.name%></a></p>
+                <p id="price">₹<%=book[i].price%></p>
+            </div>
+        </div>
+
+    <%}%>
+
+</div>

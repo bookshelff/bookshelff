@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
     <link rel="stylesheet" href=" <%=assetPath('/css/profile.css')%>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="<%=assetPath('/css/all-books.css')%>">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -63,28 +64,26 @@
 
   
     <div id="ads">
-    <div class="forminfo"> Ads published by <%=profile_user.name%></div>
-    <%for(var i=0;i<books.length;i++){%>
-        <a href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100px" width="100px"></a>
-        <br>
-        <ul>
-            <li>
-                Title: <%=books[i].title%>
-            </li>
-            <li>
-                Author/Publisher: <%=books[i].author%>
-            </li>
-            <li>
-                Type: <%=books[i].type%>
-            </li>
-            <li>
-                Seller: <%=books[i].user.name%>
-            </li>
-    
-            <li><a href="/books/remove/<%=books[i].id%>">Delete Advertisement</a></li>
-        </ul>
-    
-    <%}%>
+    <div id="ads-title"> Ads published by <%=profile_user.name%></div>
+
+        <div id="shelf">
+            <%for(var i=0;i<books.length;i++){%>
+
+                <div id="book">
+
+                    <a id="book-img" href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+                    <div id="book-info">
+                        <h4 id="book-title"> <%=books[i].title%> </h4>
+                        <p>Author: <%=books[i].author%></p>
+                        <p>Location: <%=books[i].location%></p>
+                        <p>Seller: <a href="/users/profile/<%=books[i].user.id%>"><%=books[i].user.name%></a></p>
+                        <p id="price">₹<%=books[i].price%></p>
+                    </div>
+                </div>
+
+            <%}%>
+
+        </div>  
 
     </div>
 
