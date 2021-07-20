@@ -22,9 +22,11 @@
 
     <div id="user-info">
     <div id="info-container">
-     
-    <img id="dp" src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
-    
+     <%if(profile_user.avatar){%>
+        <img id="dp" src="<%=profile_user.avatar%>" alt="Profile Picture" width="20%" height="30%">
+    <%}else{%>
+        <img id="dp" src="/uploads/users/avatars/Sample_Avatar.png" alt="Profile Picture" width="20%" height="30%">
+    <%}%>
     <h3 id="name"><%=profile_user.name%></h3>
     <span id="perinfo">
     
@@ -71,7 +73,11 @@
 
                 <div id="book">
 
-                    <a id="book-img" href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+                    <%if(books[i].avatar){%>
+                        <a id="book-img" href="<%=books[i].avatar%>"><img src="<%=books[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+                    <%}else{%>
+                        <a id="book-img" href="/uploads/books/image/Book_Avatar.png"><img src="/uploads/books/image/Book_Avatar.png" alt="Book Image" height="100%" width="100%"></a>
+                    <%}%>
                     <div id="book-info">
                         <h4 id="book-title"> <%=books[i].title%> </h4>
                         <p>Author: <%=books[i].author%></p>
