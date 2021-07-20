@@ -1,0 +1,23 @@
+
+<link rel="stylesheet" type="text/css" href="<%=assetPath('/css/all-books.css')%>">
+<div id="shelf">
+    <%for(var i=0;i<book.length;i++){%>
+
+        <div id="book">
+            <%if(book[i].item.avatar){%>
+                <a id="book-img" href="<%=book[i].item.avatar%>"><img src="<%=book[i].item.avatar%>" alt="Book Image" height="100%" width="100%"></a>
+            <%}else{%>
+                <a id="book-img" href="/uploads/books/image/Book_Avatar.png"><img src="/uploads/books/image/Book_Avatar.png" alt="Book Image" height="100%" width="100%"></a>
+            <%}%>
+            <div id="book-info">
+                <h4 id="book-title"> <%=book[i].item.title%> </h4>
+                <p>Author: <%=book[i].item.author%></p>
+                <p>Location: <%=book[i].item.location%></p>
+                <p>Seller: <a href="/users/profile/<%=book[i].item.user.id%>"><%=book[i].item.user.name%></a></p>
+                <p id="price">₹<%=book[i].item.price%></p>
+            </div>
+        </div>
+
+    <%}%>
+
+</div>

@@ -4,8 +4,11 @@
     <%for(var i=0;i<book.length;i++){%>
 
         <div id="book">
-
-            <a id="book-img" href="<%=book[i].avatar%>"><img src="<%=book[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+            <%if(book[i].avatar){%>
+                <a id="book-img" href="<%=book[i].avatar%>"><img src="<%=book[i].avatar%>" alt="Book Image" height="100%" width="100%"></a>
+            <%}else{%>
+                <a id="book-img" href="/uploads/books/image/Book_Avatar.png"><img src="/uploads/books/image/Book_Avatar.png" alt="Book Image" height="100%" width="100%"></a>
+            <%}%>
             <div id="book-info">
                 <h4 id="book-title"> <%=book[i].title%> </h4>
                 <p>Author: <%=book[i].author%></p>

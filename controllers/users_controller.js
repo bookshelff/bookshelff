@@ -30,51 +30,40 @@ module.exports.profile = function(req,res){
 };
 
 module.exports.update = async function(req,res){
-    if(req.user.id==req.params.id){
-        // User.findByIdAndUpdate(req.user.id,req.body,function(err,user){
-        //     if(err){
-        //         console.log('Error in updating the user!');
-        //         return res.redirect('back');
-        //     }
-        //     else res.redirect('back');
-        // });
-        try{
+    try{
+        if(req.user.id==req.params.id){
             let user = await User.findById(req.user.id);
-            console.log(req.body);
-            user.name = req.body.name;
-            user.email = req.body.email;
-            user.phone = req.body.phone;
-            user.save();
+           
 
             User.uploadedAvatar(req,res,function(err){
                 if(err){
                     console.log("******* Multer Error", err);
                     return res.redirect('back');
                 }else{
-
-                    
+                    // console.log(req.body);
+                    // console.log(user);
+                    user.name = req.body.name;
+                    user.phone = req.body.phone;
+                    user.email = req.body.email;
+                    user.save();
                     if(req.file){
-
                         if(user.avatar){
                             if(fs.existsSync(path.join(__dirname,'..',user.avatar))){
                                 fs.unlinkSync(path.join(__dirname,'..',user.avatar));
                             }
                         }
-
                         user.avatar = User.avatarPath + '/' + req.file.filename;
                     }
-                    user.save();
                     return res.redirect('back');
                 }
             });
-        }catch(err){
-            console.log('Error', err);
-            req.flash('error',err);
-            return res.redirect('back');
+        }else{
+            return res.status(401).send('Unauthorized');
         }
-
-    }else{
-        return res.status(401).send('Unauthorized');
+    }catch(err){
+        console.log('Error', err);
+        req.flash('error',err);
+        return res.redirect('back');
     }
 };
 
