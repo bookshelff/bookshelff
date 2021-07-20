@@ -40,6 +40,11 @@ module.exports.update = async function(req,res){
         // });
         try{
             let user = await User.findById(req.user.id);
+            console.log(req.body);
+            user.name = req.body.name;
+            user.email = req.body.email;
+            user.phone = req.body.phone;
+            user.save();
 
             User.uploadedAvatar(req,res,function(err){
                 if(err){
@@ -47,8 +52,7 @@ module.exports.update = async function(req,res){
                     return res.redirect('back');
                 }else{
 
-                    user.name = req.user.name;
-                    user.email = req.user.email;
+                    
                     if(req.file){
 
                         if(user.avatar){
