@@ -33,6 +33,7 @@ module.exports.update = async function(req,res){
     try{
         if(req.user.id==req.params.id){
             let user = await User.findById(req.user.id);
+           
 
             User.uploadedAvatar(req,res,function(err){
                 if(err){

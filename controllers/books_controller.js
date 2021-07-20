@@ -123,6 +123,10 @@ module.exports.searchBooks = function(req,res){
         
         const result = fuse.search(keyword);
         console.log(result);
+        return res.render('searched_books',{
+            title: 'Search Results',
+            book: result
+        }); 
         // return result;
         
   
