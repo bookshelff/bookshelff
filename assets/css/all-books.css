@@ -1,3 +1,6 @@
+body{
+    background-color: rgb(243, 243, 243);
+}
 #shelf{
     display: flex;
     width: 90vw;
@@ -9,17 +12,20 @@
 }
 
 #book{
-    /* border: 0.5px solid gray; */
+    /* border: 1px solid rgb(110, 110, 110); */
+    background-color: white;
     border-radius: 15px;
     width: 40vw;
     height: 45vh;
     margin: 1.5vw;
     position: relative;
-    transition: 0.2s;
+    transition: 0.4s;
+    box-shadow: 2px 2px 5px 5px rgb(197, 197, 197);
+    
 }
 
 #book:hover{
-    box-shadow: 2px 2px 5px 5px rgb(197, 197, 197);
+    box-shadow: none;
 }
 
 #book-img{
