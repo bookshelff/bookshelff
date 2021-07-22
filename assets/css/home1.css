@@ -1,7 +1,7 @@
 body {
   width: 100vw;
   height: 100vh;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 
 .nav {
@@ -58,18 +58,15 @@ body {
 }
 
 #bgVideo video {
-  object-fit: cover;
-  width: inherit;
+  width: 100vw;
+  height: 100vh;
+  transform: scale(1.5);
 }
 
 #bgVideo {
   width: 100%;
+  height: 100%;
   overflow: hidden;
-  position: relative;
-  z-index: 0;
-  border: 0 solid white;
-  border-radius: 0 0 50% 50%;
-  transform: scale(1.5);
 }
 
 #search-parent {
@@ -86,11 +83,12 @@ body {
   background-color: white;
   width: 70vw;
   height: auto;
-  position: relative;
-  border-radius: 10px 10px 10px 10px;
+  position: fixed;
+  border-radius: 10px;
+  /* box-shadow: 1.5px 1.5px 20px #d1d0d0; */
   z-index: 30;
-  box-shadow: 7px 7px 20px #bbb9b9;
   transition: all 0.3s;
+  top: 70vh;
 }
 
 #search-box:hover {
@@ -135,14 +133,22 @@ body {
 }
 
 #search-bar {
-  margin: 3vw;
+  width: 100%;
+  height: 100%;
+  padding: 4%;
+  /* margin: 3vw;
   margin-top: 1vh;
-  margin-bottom: 2.5vh;
-  display: flex;
+  margin-bottom: 2.5vh; */
   position: relative;
+}
+
+#search-bar form{
+  width: 94%;
+  margin-left: 3%;
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 #search-bar input[type=text] {
@@ -211,4 +217,14 @@ body {
 
 #navBottomChild h6 {
   font: 20px;
+}
+
+#logo1{
+  position: fixed;
+  top: 23vh;
+  left: 27vw;
+  font-family: festive;
+  color: white;
+  font-size: 12vw;
+  text-shadow: 2px 2px 8px white;
 }

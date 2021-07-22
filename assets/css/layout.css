@@ -1,0 +1,24 @@
+@media screen and (max-width: 1000px) {
+    body{
+        background-color: black !important;
+    }
+}
+
+#splash{
+    position: fixed;
+    background-color: black;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+}
+#splash img{
+    z-index: 101;
+    background-color: black;
+    height: 36vw;
+    width: 30vw;
+    position: fixed;
+    top: 25vh;
+    left: 35vw;
+}

@@ -1,22 +1,47 @@
-
+<link rel="stylesheet" type="text/css" href="<%=assetPath('/css/signin.css')%>">
     <%if(locals.user){%>
 
-
-        <label for="add-new-book">Post Book/Notes For Sale</label>
-        <form id="add-new-book" action="/books/post" enctype="multipart/form-data" method="POST">
-            <input type="text" name="title" placeholder="Title" required>
-            <input type="text" name="author" placeholder="Author">
-            <input type="text" name="location" placeholder="Location">
-            <input type="text" name="price" placeholder="Price">
-            <label for="type">Choose a category:</label>
-            <select id="type" name="type">
-                <option value="book">Book</option>
-                <option value="notes">Notes</option>
-            </select>
-            <input type="file" name="avatar" placeholder="Add Image">
-            <input type="submit" value="Submit">
-        </form>
-
+        <div id="container">
+            <div id="parent-sign-in">
+                <h1>Post Ad</h1>
+                <form action="/books/post" method="POST" id="signin" enctype="multipart/form-data">
+                    <br>
+                    <div id="formbox">
+                    <div class="forminfo">Title</div>
+                    <input class="si" type="text" name="title" placeholder="Title" required> <br> <br>
+                    <div class="forminfo">Author/Publisher</div>
+                    <input class="si" type="text" name="author" placeholder="Author"> <br> <br>
+                    <div class="forminfo">Location</div>
+                    <input class="si" type="text" name="location" placeholder="Location"> <br> <br>
+                    <div class="forminfo">Price</div>
+                    <input class="si" type="number" name="price" placeholder="₹"> <br><br>
+                    <div class="forminfo">Book Image</div> <br>
+                    <input type="file" class="file-upload" name="avatar" placeholder="Add Image"> <br><br>
+                    <!-- <label for="type">Choose a category:</label>
+                    <select id="type" name="type">
+                        <option value="book">Book</option>
+                        <option value="notes">Notes</option>
+                    </select> -->
+                    
+                    </div>
+                    <br>
+                    <input class="submit" type="submit" value="Post">
+                </form>
+            </div>
+            <div id="images">
+                <div id="img1" class="imgs" >
+                    <img src="<%=assetPath('/img/book3.jpg')%>" alt="">
+                </div>
+                
+                <div id="img2" class="imgs">
+                    <img src="<%=assetPath('/img/book2.jpg')%>" alt="">
+                </div>
+        
+                <div id="img3" class="imgs">
+                    <img src="<%=assetPath('/img/book1.jpg')%>" alt="">
+                </div>
+            </div>
+        </div>
     <%}else{%>
         <h2>Please Log In First!!</h2>
     <%}%>

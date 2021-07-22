@@ -5,6 +5,9 @@ setInterval(function(){
     video.play();
 }, 1000);
 
+var logo = document.getElementById("logo");
+logo.innerHTML = "";
+
 var filterButton = document.querySelectorAll('.search-filter');
 for(var i=0;i<filterButton.length;i++)
 {
