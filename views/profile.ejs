@@ -83,7 +83,10 @@
                         <p>Author: <%=books[i].author%></p>
                         <p>Location: <%=books[i].location%></p>
                         <p>Seller: <a href="/users/profile/<%=books[i].user.id%>"><%=books[i].user.name%></a></p>
-                        <p id="price">₹<%=books[i].price%></p>
+                        <p id="price">₹<%=books[i].price%></p> 
+                        <%if(user.id==profile_user.id){%>
+                         <a id="delete" href="/books/remove/<%=books[i].id%>"> Delete</a>
+                        <%}%>
                     </div>
                 </div>
 

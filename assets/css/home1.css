@@ -80,14 +80,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 100px;
 }
 
 #search-box {
   background-color: white;
   width: 70vw;
   height: auto;
-  position: absolute;
+  position: relative;
   border-radius: 10px 10px 10px 10px;
   z-index: 30;
   box-shadow: 7px 7px 20px #bbb9b9;
@@ -136,24 +135,16 @@ body {
 }
 
 #search-bar {
-  width: 100%;
+  margin: 3vw;
   margin-top: 1vh;
   margin-bottom: 2.5vh;
   display: flex;
   position: relative;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
-#search-bar form {
- 
-  width:100%;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
+
 #search-bar input[type=text] {
   outline: none;
   padding: 3px;

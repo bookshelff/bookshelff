@@ -1,6 +1,7 @@
 const Book = require('../models/book');
 const fs = require('fs');
 const Fuse = require('fuse.js');
+const path = require('path');
 
 module.exports.addBook = async function(req,res){
     return res.render('add_book',{
@@ -78,25 +79,30 @@ module.exports.allBooks = async function(req,res){
 module.exports.remove = async function(req,res){
     try{
         let book = await Book.findById(req.params.id);
-        console.log(book.user._id);
-        console.log(req.user._id);
+        // console.log(book.user._id);
+        // console.log(req.user._id);
+        
+        if(JSON.toString(req.user.id)==JSON.toString(book.user.id)){
+            console.log('here');
+            if(book.avatar){
+                if(fs.existsSync(path.join(__dirname,'..',book.avatar))){
+                    fs.unlinkSync(path.join(__dirname,'..',book.avatar));
+                }
+            }
+            book.remove();
+            console.log("You're book has been removed!");
+            return res.redirect('back');
+        }
 
-        if(req.user._id!=book.user._id){
+        else
+        {
             return res.json('401',{
                 message: "Unauthorized Request"
             });
         }
         
-        console.log('here');
-        if(book.avatar){
-            if(fs.existsSync(path.join(__dirname,'..',book.avatar))){
-                fs.unlinkSync(path.join(__dirname,'..',book.avatar));
-            }
-        }
-        book.remove();
-        console.log("You're book has been removed!");
-        return res.redirect('back');
-        return res.redirect('back');
+        
+        // return res.redirect('back');
     }catch(err){
         console.log("Internal Server Error!",err);
         return res.redirect('back');
