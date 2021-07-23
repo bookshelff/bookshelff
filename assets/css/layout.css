@@ -45,18 +45,27 @@
     /* transition: 0.3s; */
 }
 
+#underc{
+    
+    width: 100%;
+    position: fixed;
+    top: 35vh;
+    display: flex;
+    justify-content: center;
+}
 #splash img{
     z-index: 101;
     background-color: black;
-    height: 33vw;
-    width: 30vw;
-    position: fixed;
-    top: 35vh;
-    left: 35vw;
+    height: 200px;
+    width: 200px;
+    /* position: fixed; */
+    /* text-align: center; */
+    /* top: 35vh; */
+    /* left: 35vw; */
     animation: splash 0.6s ease-in-out alternate infinite;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 900px){
     #splash{
         display: block;
     }
