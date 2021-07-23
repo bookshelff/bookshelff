@@ -58,12 +58,13 @@ body {
 }
 
 #bgVideo video {
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   transform: scale(1.5);
 }
 
 #bgVideo {
+  position: fixed;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -135,7 +136,9 @@ body {
 #search-bar {
   width: 100%;
   height: 100%;
-  padding: 4%;
+  padding: 5px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   /* margin: 3vw;
   margin-top: 1vh;
   margin-bottom: 2.5vh; */
@@ -149,12 +152,13 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 #search-bar input[type=text] {
   outline: none;
-  padding: 3px;
-  margin: 4px;
+  /* padding: 3px; */
+  margin: 10px;
   border: none;
   height: 60px;
   background-color: white;
@@ -164,6 +168,9 @@ body {
   transition: width 0.4s ease-in-out;
   flex-shrink: 0;
   padding-left: 10px;
+  font-size: 20px;
+  color: rgb(78, 78, 78);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 #search-bar input[type=text]:focus {
@@ -175,6 +182,7 @@ body {
   border: none;
   height: 60px;
   padding: 2px 10px;
+  margin: 10px;
   /* font-weight: 450; */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: large;
@@ -222,9 +230,12 @@ body {
 #logo1{
   position: fixed;
   top: 23vh;
-  left: 27vw;
+  left: 0;
+  width: 100vw;
+  text-align: center;
   font-family: festive;
   color: white;
   font-size: 12vw;
   text-shadow: 2px 2px 8px white;
+  /* transition: 0.3s; */
 }
