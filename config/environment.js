@@ -25,8 +25,8 @@ const development = {
             pass: 'Pw123456'
         }
     },
-    google_clientID: "120122670242-mhjvbvkag2kf44dguganvled3r9e7uga.apps.googleusercontent.com",
-    google_clientSecret: "O_8Cx1EjMvuI7RH4kTzc6sh8",
+    google_clientID: "219987352050-6tlorplfcsnje4k6m2dhqbnb40stsp4n.apps.googleusercontent.com",
+    google_clientSecret: "eVo8eCn88DFUhLQaC8GBtj2I",
     google_callbackURL: "http://localhost:8000/users/auth/google/callback",
     jwt_secret: 'SorryCannotTellYou',
     morgan: {
