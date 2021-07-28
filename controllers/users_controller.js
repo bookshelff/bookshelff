@@ -5,6 +5,17 @@ const crypto = require('crypto');
 const path = require('path');
 const Book = require('../models/book');
 const resetPassMailer = require('../mailers/reset_password');
+const signUpMailer = require('../mailers/sign_up');
+
+function generateOTP() {
+    var digits = '0123456789';
+    let OTP = '';
+    for (let i = 0; i < 6; i++ ) {
+        OTP += digits[Math.floor(Math.random() * 10)];
+    }
+    return OTP;
+}
+
 module.exports.profile = function(req,res){
     // if(req.cookies.user_id){
     //     User.findById(req.cookies.user_id,function(err,user){
@@ -116,9 +127,9 @@ module.exports.create = function(req,res){
                         return res.redirect('back');
                     }
         
-                    // alert("User created successfully!");
+                    // alert("User created successfully!");cl
                     console.log("User created successfully!");
-                    return res.redirect('./signin');
+                    return res.redirect('./sign-in');
                 });
             }
         }
@@ -176,13 +187,10 @@ module.exports.resetPassword = function(req,res){
             console.log("Error in finding email!",err);
             return;
         }
-        function generateOTP() {
-            var digits = '0123456789';
-            let OTP = '';
-            for (let i = 0; i < 6; i++ ) {
-                OTP += digits[Math.floor(Math.random() * 10)];
-            }
-            return OTP;
+        if(!user){
+            console.log("No Such User Found!");
+            // alert("No Such User Found!");
+            return res.redirect('/users/sign-in');
         }
         user.resetPassword.accessToken = generateOTP();
         user.resetPassword.isValid = true;
