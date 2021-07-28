@@ -77,7 +77,7 @@ module.exports.signUp = function(req,res){
         return res.redirect('/users/profile/' + req.user._id);
     }
     return res.render("user_sign_up",{
-        title: "Social | Sign Up"
+        title: "Bookshelff | Sign Up"
     });
 };
 
@@ -86,7 +86,7 @@ module.exports.signIn = function(req,res){
         return res.redirect('/users/profile/' + req.user._id);
     }
     return res.render("user_sign_in",{
-        title: "Social | Sign In"
+        title: "Bookshelff | Sign In"
     });
 };
 
