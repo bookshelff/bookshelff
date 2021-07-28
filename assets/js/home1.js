@@ -1,4 +1,19 @@
 var video = document.querySelector('#bgVideo video');
+var splashLoad = document.querySelector('#splash-load');
+
+function removeSplashDisplay(){
+    splashLoad.classList.add('display-none');
+}
+
+function removeSplashOpacity(){
+    splashLoad.classList.add('opacity-zero');
+    setTimeout(removeSplashDisplay,1000);
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+    setTimeout(removeSplashOpacity,2000);
+});
+
 // console.log(video);
 video.play();
 setInterval(function(){
