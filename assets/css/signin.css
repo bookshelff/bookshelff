@@ -172,3 +172,14 @@ input[type=submit] {
   transform: scale(0.85);
   cursor: pointer;
 }
+
+#link 
+{
+  cursor: pointer;
+  color: teal;
+}
+#forgot
+{
+  cursor: pointer;
+  color: teal;
+}
