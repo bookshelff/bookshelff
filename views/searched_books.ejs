@@ -1,6 +1,12 @@
 
 <link rel="stylesheet" type="text/css" href="<%=assetPath('/css/all-books.css')%>">
 <div id="shelf">
+
+    <%if(book.length==0){%>
+        <div id="nobook">
+            No such Book found :(
+        </div>
+    <%}%>
     <%for(var i=0;i<book.length;i++){%>
 
         <div id="book">
