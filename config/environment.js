@@ -27,7 +27,7 @@ const development = {
     },
     google_clientID: "219987352050-6tlorplfcsnje4k6m2dhqbnb40stsp4n.apps.googleusercontent.com",
     google_clientSecret: "eVo8eCn88DFUhLQaC8GBtj2I",
-    google_callbackURL: "http://localhost:8000/users/auth/google/callback",
+    google_callbackURL: "http://127.0.0.1:8000/users/auth/google/callback",
     jwt_secret: 'SorryCannotTellYou',
     morgan: {
         mode: 'dev',
