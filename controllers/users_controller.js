@@ -116,9 +116,9 @@ module.exports.create = function(req,res){
         }
         else{
             if(user){
-                console.log("Email already exists!");
+                // console.log("Email already exists!");
                 // alert("Email already exists!");
-                return res.redirect('./');
+                return res.redirect('/users/create-session');
             }
             else{
                 User.create(req.body,function(err,user){
