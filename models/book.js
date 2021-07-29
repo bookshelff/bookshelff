@@ -46,7 +46,10 @@ let storage = multer.diskStorage({
   });
 
 // Statics
-bookSchema.statics.uploadedAvatar = multer({storage: storage}).single('avatar');
+bookSchema.statics.uploadedAvatar = multer({
+    storage: storage,
+    limits: { fileSize: 10000*1000 }
+}).single('avatar');
 bookSchema.statics.avatarPath = AVATAR_PATH;
 
 
