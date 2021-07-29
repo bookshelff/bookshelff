@@ -1,13 +1,12 @@
 const nodeMailer = require('../config/nodemailer');
 
-module.exports.newComment = (comment) => {
-    let htmlString = nodeMailer.renderTemplate({comment:comment},"/comments/new_comment.ejs");
+module.exports.signUp = (user) => {
+    let htmlString = nodeMailer.renderTemplate({user:user},"/sign_up/send_otp.ejs");
 
-    console.log(comment);
     nodeMailer.transporter.sendMail({
         from: "bookshelf.ind@gmail.com",
-        to: comment.user.email,
-        subject: "New Comment Published!",
+        to: user.email,
+        subject: "Sign Up",
         html: htmlString
     },(err,info) => {
         if(err){

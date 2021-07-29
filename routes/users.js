@@ -13,7 +13,7 @@ Router.get('/auth/google',passport.authenticate('google',{scope: ['profile','ema
 Router.get('/auth/google/callback',passport.authenticate(
     'google',
     {failureRedirect: 'users/sign-in'}
-), usersController.createSession);
+), usersController.create);
 Router.post('/create',usersController.create);
 // Router.post('/create-session',usersController.createSession);
 // using passport as a middleware to authenticate
