@@ -19,7 +19,7 @@
                 <h4 id="book-title"> <%=book[i].item.title%> </h4>
                 <p>Author: <%=book[i].item.author%></p>
                 <p>Location: <%=book[i].item.location%></p>
-                <p>Seller: <a href="/users/profile/<%=book[i].item.user.id%>"><%=book[i].item.user.name%></a></p>
+                <p>Seller: <a href="/users/profile/<%=user[i].user._id%>"><%=user[i].user.name%></a></p>
                 <p id="price">₹<%=book[i].item.price%></p>
             </div>
         </div>

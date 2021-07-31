@@ -1,4 +1,5 @@
 const Book = require('../models/book');
+const User = require('../models/user');
 const fs = require('fs');
 const Fuse = require('fuse.js');
 const path = require('path');
@@ -81,9 +82,19 @@ module.exports.remove = async function(req,res){
         let book = await Book.findById(req.params.id);
         // console.log(book.user._id);
         // console.log(req.user._id);
+        if((req.user.email=='aditya.banotra@gmail.com')||(req.user.email=='soodaniket028@gmail.com')){
+            if(book.avatar){
+                if(fs.existsSync(path.join(__dirname,'..',book.avatar))){
+                    fs.unlinkSync(path.join(__dirname,'..',book.avatar));
+                }
+            }
+            book.remove();
+            console.log("You're book has been removed!");
+            return res.redirect('back');
+        }
         
         if(JSON.toString(req.user.id)==JSON.toString(book.user.id)){
-            console.log('here');
+            // console.log('here');
             if(book.avatar){
                 if(fs.existsSync(path.join(__dirname,'..',book.avatar))){
                     fs.unlinkSync(path.join(__dirname,'..',book.avatar));
@@ -127,13 +138,30 @@ module.exports.searchBooks = function(req,res){
         });
         // console.log(books);
         
-        const result = fuse.search(keyword);
-        console.log(result);
+        var result = fuse.search(keyword);
+        var users = new Array();
+        for(var i=0;i<result.length;i++){
+            User.findById(result[i].item.user,function(err,user){
+                if(err){
+                    console.log("User not found!");
+                    
+                }else{
+                    // searchUsers[i] = user;
+                    var obj = new Object();
+                    obj = {
+                        user: user
+                    };
+                    users.push(obj).save;
+                    // console.log(users);
+                }
+            });
+        }
+        console.log(users);
         return res.render('searched_books',{
             title: 'Search Results',
-            book: result
+            book: result,
+            user: users
         }); 
-        // return result;
         
   
     });

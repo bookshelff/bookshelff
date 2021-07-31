@@ -35,8 +35,8 @@
   .navIcon a:hover {
     /* background-color: rgb(197, 197, 197); */
     /* border-bottom: 1px solid white; */
-    color: rgb(0, 0, 0);
-    text-shadow: 4px 4px 8px black;
+    color:#ff5201
+    /* text-shadow: 4px 4px 8px black; */
     /* font-size: 33px; */
   }
   

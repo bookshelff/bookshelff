@@ -116,20 +116,24 @@ module.exports.create = function(req,res){
         }
         else{
             if(user){
-                // console.log("Email already exists!");
+                console.log("Email already exists!");
                 // alert("Email already exists!");
-                return res.redirect('/users/create-session');
+                return res.redirect('/users/sign-in');
             }
             else{
+                req.body.password = crypto.randomBytes(10).toString('hex');
                 User.create(req.body,function(err,user){
                     if(err){
                         console.log("Error in creating a user!");
                         return res.redirect('back');
                     }
-        
-                    // alert("User created successfully!");cl
+                    // alert("User created successfully!");
+                    user.resetPassword.accessToken = generateOTP();
+                    user.resetPassword.isValid = true;
+                    signUpMailer.signUp(user);
+                    user.resetPassword.time = (Date.now()/1000);
                     console.log("User created successfully!");
-                    return res.redirect('./sign-in');
+                    return res.redirect('/users/set-password');
                 });
             }
         }

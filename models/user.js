@@ -34,6 +34,9 @@ const userSchema = new mongoose.Schema({
         },
         time: {
             type: String
+        },
+        prevPass: {
+            type: String
         }
     }
 }, {
