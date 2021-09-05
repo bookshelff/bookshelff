@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     phone: {
-        type : Number,
-        required : true
+        type : Number
+        // required : true
     },
     avatar: {
         type: String
@@ -33,6 +33,9 @@ const userSchema = new mongoose.Schema({
             type: Boolean
         },
         time: {
+            type: String
+        },
+        prevPass: {
             type: String
         }
     }

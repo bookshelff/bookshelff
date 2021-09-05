@@ -13,7 +13,7 @@ Router.get('/auth/google',passport.authenticate('google',{scope: ['profile','ema
 Router.get('/auth/google/callback',passport.authenticate(
     'google',
     {failureRedirect: 'users/sign-in'}
-), usersController.createSession);
+), usersController.create);
 Router.post('/create',usersController.create);
 // Router.post('/create-session',usersController.createSession);
 // using passport as a middleware to authenticate
@@ -23,7 +23,7 @@ Router.post('/create-session',passport.authenticate(
 ),usersController.createSession);
 Router.get('/sign-out',usersController.destroySession);
 Router.post('/forgot-password',usersController.resetPassword);
-Router.get('/set-password',usersController.setPassword);
+// Router.get('/set-password',usersController.setPassword);
 Router.post('/set-new-password',usersController.setNewPassword);
 
 module.exports = Router;
