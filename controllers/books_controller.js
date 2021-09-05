@@ -123,7 +123,7 @@ module.exports.remove = async function(req,res){
 module.exports.searchBooks = function(req,res){
 
     const keyword = req.query.title + req.query.location ;
-    console.log(keyword);
+    // console.log(keyword);
 
     Book.find({},function(err,books){
         if(err){
@@ -139,35 +139,44 @@ module.exports.searchBooks = function(req,res){
      
         
         var result = fuse.search(keyword);
+        console.log(result);
         var users = new Array();
+
         
-        for(var i=0;i<result.length;i++){
-            User.findById(result[i].item.user,function(err,user){
-                if(err){
-                    console.log("User not found!");
-                    
-                }else{
-                    // searchUsers[i] = user;
-                    var obj = new Object();
-                    obj = {
-                        user: user
-                    };
-                    users.push(obj).save;
-                    // console.log(users);
-                }
-            });
+
+
+        var findUsers = function(){
+            for(var i=0;i<result.length;i++){
+                User.findById(result[i].item.user,function(err,user){
+                    if(err){
+                        console.log("User not found!");
+                        
+                    }else{
+                        // searchUsers[i] = user;
+                        var obj = new Object();
+                        obj = {
+                            user: user
+                        };
+                        console.log(user,);
+                        users.push(obj);
+                        // console.log(users);
+                    }
+                });
+            }
+            
+
         }
-        console.log(users);
-        return res.render('searched_books',{
-            title: 'Search Results',
-            book: result,
-            user: users
-        }); 
-        
-  
-    });
-        
-        
-    
+        findUsers();
+        var interval = setInterval(function(){
+            if(users.length==result.length){
+                clearInterval(interval);
+                return res.render('searched_books',{
+                    title: 'Search Results',
+                    book: result,
+                    user: users
+                }); 
+            }
+        },50);
+    })
    
 };
