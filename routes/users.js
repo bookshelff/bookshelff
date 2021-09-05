@@ -23,7 +23,7 @@ Router.post('/create-session',passport.authenticate(
 ),usersController.createSession);
 Router.get('/sign-out',usersController.destroySession);
 Router.post('/forgot-password',usersController.resetPassword);
-Router.get('/set-password',usersController.setPassword);
+// Router.get('/set-password',usersController.setPassword);
 Router.post('/set-new-password',usersController.setNewPassword);
 
 module.exports = Router;

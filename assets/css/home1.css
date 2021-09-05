@@ -57,7 +57,7 @@ body {
   background-color: rgba(255, 81, 1, 0.671);
 }
 
-#bgVideo video {
+#bgVideo  {
   /* width: 100vw; */
   height: 100vh;
   transform: scale(1.5);

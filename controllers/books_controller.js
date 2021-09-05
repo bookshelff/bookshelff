@@ -136,11 +136,14 @@ module.exports.searchBooks = function(req,res){
                 'type'
             ]
         });
-        // console.log(books);
+     
         
         var result = fuse.search(keyword);
         console.log(result);
         var users = new Array();
+
+        
+
 
         var findUsers = function(){
             for(var i=0;i<result.length;i++){
@@ -160,9 +163,8 @@ module.exports.searchBooks = function(req,res){
                     }
                 });
             }
-            if(users.length==result.length)
-                return true;
-            else return false;
+            
+
         }
         findUsers();
         var interval = setInterval(function(){

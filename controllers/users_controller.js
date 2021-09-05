@@ -109,6 +109,8 @@ module.exports.create = function(req,res){
         return res.redirect('back');
     }
 
+
+
     User.findOne({email: req.body.email},function(err,user){
         if(err){
             console.log("Error in finding email in sign-up!");
@@ -133,7 +135,13 @@ module.exports.create = function(req,res){
                     signUpMailer.signUp(user);
                     user.resetPassword.time = (Date.now()/1000);
                     console.log("User created successfully!");
-                    return res.redirect('/users/set-password');
+
+                    return res.render('set-password',{
+                        title: "Set Password",
+                        email : user.email
+
+                    });
+                    // return res.redirect('/users/set-password');
                 });
             }
         }
@@ -201,15 +209,18 @@ module.exports.resetPassword = function(req,res){
         resetPassMailer.resetPassword(user);
         user.resetPassword.time = (Date.now()/1000);
         user.save();
-        res.redirect('/users/set-password');
+        return res.render('set-password',{
+            title: "Reset Password",
+            email : req.body.email
+        });
+        
+        // res.redirect('/users/set-password');
     });
 }
 ;
-module.exports.setPassword = function(req,res){
-    res.render('set-password',{
-        title: "Reset Password"
-    });
-};
+// module.exports.setPassword = function(req,res){
+    
+// };
 
 module.exports.setNewPassword = function(req,res){
     User.findOne({email:req.body.email},function(err,user){
@@ -217,6 +228,7 @@ module.exports.setNewPassword = function(req,res){
             console.log("Error in finding user!",err);
             return;
         }
+        console.log(req.body.email)
         if(!user){
             console.log("Email not found!")
             return res.redirect('back');
