@@ -1,4 +1,5 @@
 const Book = require('../models/book');
+const User = require('../models/user');
 const fs = require('fs');
 const Fuse = require('fuse.js');
 const path = require('path');
@@ -125,9 +126,10 @@ module.exports.searchBooks = function(req,res){
                 'type'
             ]
         });
-        // console.log(books);
+     
         
-        const result = fuse.search(keyword);
+        var result = fuse.search(keyword);
+        result.find({}).populate('user');
         console.log(result);
         return res.render('searched_books',{
             title: 'Search Results',
