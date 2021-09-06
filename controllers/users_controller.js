@@ -237,7 +237,11 @@ module.exports.setNewPassword = function(req,res){
         // console.log(req.body.otp)
         if(user.resetPassword.accessToken!=req.body.otp){
             console.log('Wrong OTP!');
-            return res.redirect('back');
+            req.flash('success', 'OTP did not match');
+            return res.render('set-password',{
+                title: "Reset Password",
+                email : req.body.email
+            });
         }
         if((((Date.now()/1000)-user.resetPassword.time)>600)||(!user.resetPassword.isValid)){
             user.resetPassword.isValid = false;
@@ -246,11 +250,18 @@ module.exports.setNewPassword = function(req,res){
         }
         if(req.body.password!=req.body.confirm_password){
             console.log("Password not matched!");
-            return res.redirect('back');
+            req.flash('error', 'Password not matched');
+            return res.render('set-password',{
+                title: "Reset Password",
+                email : req.body.email
+            });
+
+
         }
         user.password = req.body.password;
         user.resetPassword.isValid = false;
         user.save();
+        req.flash('success', "Password Updated");
         console.log("Password changed successfully!");
         // console.log(req.body.password);
         return res.redirect('/users/sign-in');
