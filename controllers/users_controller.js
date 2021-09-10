@@ -132,14 +132,16 @@ module.exports.create = function(req,res){
                     // alert("User created successfully!");
                     user.resetPassword.accessToken = generateOTP();
                     user.resetPassword.isValid = true;
+                    user.save();
                     signUpMailer.signUp(user);
                     user.resetPassword.time = (Date.now()/1000);
                     console.log("User created successfully!");
 
                     return res.render('set-password',{
                         title: "Set Password",
-                        email : user.email
-
+                        email : user.email,
+                        success: "OTP Sent!",
+                        error: ""
                     });
                     // return res.redirect('/users/set-password');
                 });
@@ -211,7 +213,9 @@ module.exports.resetPassword = function(req,res){
         user.save();
         return res.render('set-password',{
             title: "Reset Password",
-            email : req.body.email
+            email : req.body.email,
+            success: "OTP Sent!",
+            error: ""
         });
         
         // res.redirect('/users/set-password');
@@ -238,10 +242,12 @@ module.exports.setNewPassword = function(req,res){
         
         if(user.resetPassword.accessToken!=req.body.otp){
             console.log('Wrong OTP!');
-            req.flash('error', 'OTP did not match');
+            // req.flash('error', 'OTP did not match');
             return res.render('set-password',{
                 title: "Reset Password",
-                email : req.body.email
+                email : req.body.email,
+                error: "OTP Did Not Match",
+                success: ""
             });
         }
         if((((Date.now()/1000)-user.resetPassword.time)>600)||(!user.resetPassword.isValid)){
@@ -251,10 +257,12 @@ module.exports.setNewPassword = function(req,res){
         }
         if(req.body.password!=req.body.confirm_password){
             console.log("Password not matched!");
-            req.flash('error', 'Password not matched');
+            // req.flash('error', 'Password did not match');
             return res.render('set-password',{
                 title: "Reset Password",
-                email : req.body.email
+                email : req.body.email,
+                error: "Password Did Not Match",
+                success: ""
             });
 
 
@@ -262,7 +270,7 @@ module.exports.setNewPassword = function(req,res){
         user.password = req.body.password;
         user.resetPassword.isValid = false;
         user.save();
-        req.flash('success', "Password Updated");
+        req.flash('success', "Password Set Successfully!");
         console.log("Password changed successfully!");
         // console.log(req.body.password);
         return res.redirect('/users/sign-in');
