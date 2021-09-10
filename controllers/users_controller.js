@@ -235,9 +235,10 @@ module.exports.setNewPassword = function(req,res){
         }
         // console.log(user.resetPassword);
         // console.log(req.body.otp)
+        
         if(user.resetPassword.accessToken!=req.body.otp){
             console.log('Wrong OTP!');
-            req.flash('success', 'OTP did not match');
+            req.flash('error', 'OTP did not match');
             return res.render('set-password',{
                 title: "Reset Password",
                 email : req.body.email
