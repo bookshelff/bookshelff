@@ -45,11 +45,9 @@
         <div id="update-form">
         <form action="/users/update/<%=profile_user.id%>" enctype="multipart/form-data" method="POST"> <br>
         <div class="forminfo">Update Name</div>
-        <input class="si" type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>" maxlength="30" > <br> <br>
+        <input class="si" type="text" name="name" placeholder="Your Name" value="<%=profile_user.name%>" maxlength="30" required> <br> <br>
         <div class="forminfo">Update Contact Number</div>
-        <input class="si" type="number" name="phone" placeholder="Your Contact Number" value="<%=profile_user.phone%>"> <br> <br>
-        <div class="forminfo">Update email</div>
-        <input class="si" type="email" name="email" placeholder="Your Email" value="<%=profile_user.email%>" required> <br> <br>
+        <input class="si" type="number" name="phone" placeholder="Your Contact Number" value="<%=profile_user.phone%>"  maxlength="15" required > <br> <br>
         <div class="forminfo">Update Profile Picture</div>
         <input type="file" name="avatar" placeholder="Profile Picture">
         <input type="submit" value="update">
