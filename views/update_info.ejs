@@ -1,0 +1,36 @@
+<link rel="stylesheet" type="text/css" href="<%=assetPath('/css/signin.css')%>">
+    <%if(locals.user){%>
+
+        <div id="container">
+            <div id="parent-sign-in">
+                <h1>Kindly update your details</h1>
+
+                <form action="/users/update/<%=user.id%>" enctype="multipart/form-data" method="POST"> <br>
+                    <div class="forminfo">Update Name</div>
+                    <input class="si" type="text" name="name" placeholder="Your Name" value="<%=user.name%>" maxlength="30"  required> <br> <br>
+                    <div class="forminfo">Update Contact Number</div>
+                    <input class="si" type="number" name="phone" placeholder="Your Contact Number" value="<%=user.phone%>" required> <br> <br>
+                
+                    <div class="forminfo">Update Profile Picture</div>
+                    <input type="file" name="avatar" placeholder="Profile Picture">
+                    <input type="submit" value="update">
+                    </form>
+            </div>
+
+            <div id="images">
+                <div id="img1" class="imgs" >
+                    <img src="<%=assetPath('/img/book3.jpg')%>" alt="">
+                </div>
+                
+                <div id="img2" class="imgs">
+                    <img src="<%=assetPath('/img/book2.jpg')%>" alt="">
+                </div>
+        
+                <div id="img3" class="imgs">
+                    <img src="<%=assetPath('/img/book1.jpg')%>" alt="">
+                </div>
+            </div>
+        </div>
+    <%}else{%>
+        <h2>Please Log In First!!</h2>
+    <%}%>

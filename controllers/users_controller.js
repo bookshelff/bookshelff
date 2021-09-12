@@ -55,7 +55,6 @@ module.exports.update = async function(req,res){
                     // console.log(user);
                     user.name = req.body.name;
                     user.phone = req.body.phone;
-                    user.email = req.body.email;
                     user.save();
                     if(req.file){
                         if(user.avatar){
@@ -126,7 +125,7 @@ module.exports.create = function(req,res){
                 req.body.password = crypto.randomBytes(10).toString('hex');
                 User.create(req.body,function(err,user){
                     if(err){
-                        console.log("Error in creating a user!");
+                        console.log("Error in creating a user!",err);
                         return res.redirect('back');
                     }
                     // alert("User created successfully!");
@@ -172,7 +171,15 @@ module.exports.createSession = function(req,res){
     //     }
 
     // });
+    
     req.flash('success', 'Logged In Successfully');
+    console.log(req.user);
+    if(!(req.user.phone))
+    {
+        return res.render('update_info',{
+            user: req.user
+        })
+    }
     return res.redirect('/');
 
 };
