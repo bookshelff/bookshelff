@@ -21,7 +21,7 @@ const logger = require('morgan');
 // Chat Server
 const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
+chatServer.listen(4785);
 console.log('Chat Server listens to the port 5000');
 if(env.name=='development'){
     app.use(sassMiddleware({
